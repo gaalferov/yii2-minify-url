@@ -13,6 +13,8 @@ What you can do
 * Input your long url and get short
 * View statistics (Google Charts)
 
+![Main page](http://s.gaalferov.com/web/image/main.jpg)
+![Details page](http://s.gaalferov.com/web/image/details.jpg)
 
 ### Install via Composer
 ----
