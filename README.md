@@ -4,9 +4,9 @@ Yii 2 Minify-URL Project (Shortener)
 This is my first project on yii2 framework.
 You can see [demo](http://s.gaalferov.com/)
 
-For example
-Long url: http://longurlsitename.com/blog-2016/very-long-article-2016.html
-Short url: http://yousite.com/aBcDeF
+For example:
+* Long url: http://longurlsitename.com/blog-2016/very-long-article-2016.html
+* Short url: http://yousite.com/aBcDeF
 
 What you can do
 ----
