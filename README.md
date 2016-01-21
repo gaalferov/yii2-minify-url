@@ -21,25 +21,19 @@ If you do not have [Composer](http://getcomposer.org/), you may install it by fo
 You can then install the application using the following command:
 
 ~~~
-git clone git@github.com:gaalferov/yii2-minify-url.git
+git clone https://github.com/gaalferov/yii2-minify-url.git
 composer global require "fxp/composer-asset-plugin:~1.1.1"
 cd yii2-minify-url
 composer install
 ~~~
 
-Now you can then access the application through the following URL:
-~~~
-http://localhost/yii2-minify-url/web/
-~~~
-
 GETTING STARTED
 ---------------
 
-After you install the application, you have to conduct the following steps to initialize
-the installed application. You only need to do these once for all.
+After you install the application, you have to conduct the following steps to initialize the installed application. You only need to do these once for all.
 
-1. Create a new database
-2. Edit the file `config/db.php` with real data, for example:
+* Create a new database
+* Edit the file `config/db.php` with real data, for example:
 ```php
 return [
     'class' => 'yii\db\Connection',
@@ -50,8 +44,13 @@ return [
     'tablePrefix' => 'nix_',
 ];
 ```
-3. Apply migrations with console command `yii migrate` or `php yii migrate`. This will create tables needed for the application to work.
+* Apply migrations with console command `yii migrate` or `php yii migrate`. This will create tables needed for the application to work.
 
+
+Now you can then access the application through the following URL:
+~~~
+http://localhost/yii2-minify-url/web/
+~~~
 
 Configuring Web Servers <span id="configuring-web-servers"></span>
 -----------------------
