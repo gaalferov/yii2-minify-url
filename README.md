@@ -38,7 +38,7 @@ GETTING STARTED
 After you install the application, you have to conduct the following steps to initialize
 the installed application. You only need to do these once for all.
 
-1. Create a new database.
+1. Create a new database
 2. Edit the file `config/db.php` with real data, for example:
 ```php
 return [
