@@ -41,7 +41,7 @@ $this->title = 'Minifi URL';
                     <?php foreach ($short_urls as $url): ?>
                         <tr>
                             <td>
-                                <a href="http://<?= Html::encode("{$url->long_url}") ?>" target="_blank" title="" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
+                                <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
                             </td>
                             <td>
                                 <div><?= $url->time_create ?></div>
