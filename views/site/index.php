@@ -41,13 +41,13 @@ $this->title = 'Minifi URL';
                     <?php foreach ($short_urls as $url): ?>
                         <tr>
                             <td>
-                                <a href="http://<?= Html::encode("{$url->long_url}") ?>"><?= Html::encode("{$url->long_url}") ?></a>
+                                <a href="http://<?= Html::encode("{$url->long_url}") ?>" target="_blank" title="" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
                             </td>
                             <td>
                                 <div><?= $url->time_create ?></div>
                             </td>
                             <td>
-                                <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>"><?= $url->short_code ?></a>
+                                <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?= $url->short_code ?></a>
                             </td>
                             <td>
                                 <a href="<?=  Url::to(['site/details', 'code' => $url->short_code]) ?>">Details</a>
