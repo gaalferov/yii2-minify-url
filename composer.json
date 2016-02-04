@@ -15,7 +15,7 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "scotthuangzl/yii2-google-chart": "dev-master",
+        "scotthuangzl/yii2-google-chart": "*",
         "linslin/yii2-curl": "*"
     },
     "require-dev": {
