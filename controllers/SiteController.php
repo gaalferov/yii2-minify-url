@@ -50,7 +50,7 @@ class SiteController extends Controller
         //get all urls
         $query = NixShortUrls::find();
         $pagination = new Pagination([
-            'defaultPageSize' => 5,
+            'defaultPageSize' => 10,
             'totalCount' => $query->count(),
         ]);
 
