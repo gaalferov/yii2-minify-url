@@ -1,0 +1,17 @@
+# Mod_Autoindex
+<IfModule mod_autoindex.c>
+    # Disable Indexes
+    Options -Indexes
+</IfModule>
+
+# Mod_Rewrite
+<IfModule mod_rewrite.c>
+    # Enable symlinks
+    Options +SymLinksIfOwnerMatch
+    # Enable mod_rewrite
+    RewriteEngine On
+
+    # Redirect all requests to web
+    RewriteCond %{REQUEST_URI} ^(.*)$
+    RewriteRule ^(.*)$ web/$1
+</IfModule>
