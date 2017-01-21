@@ -5,6 +5,11 @@ $params = array_merge(
     require(__DIR__ . '/params-local.php')
 );
 
+$db = array_merge(
+    require(__DIR__ . '/db.php'),
+    require(__DIR__ . '/db-local.php')
+);
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -41,7 +46,7 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
+        'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
