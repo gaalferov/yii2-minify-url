@@ -63,3 +63,14 @@ Now you can then access the application through the following URL:
 ~~~
 http://localhost/
 ~~~
+
+TESTS
+---------------
+* Init codeception files:
+```
+php vendor/bin/codecept bootstrap
+```
+* Run tests:
+```
+php vendor/bin/codecept run
+```
