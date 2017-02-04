@@ -70,6 +70,12 @@ TESTS
 ```
 php vendor/bin/codecept bootstrap
 ```
+* Change url to your project in file /tests/acceptance.suite.yml
+```
+config:
+        PhpBrowser:
+            url: 'http://you_url.loc'
+```
 * Run tests:
 ```
 php vendor/bin/codecept run
