@@ -56,8 +56,11 @@ return [
     'tablePrefix' => 'nix_',
 ];
 ```
-* Apply migrations with console command `yii migrate` or `php yii migrate`. This will create tables needed for the application to work.
-
+* Apply migrations with console command:
+```php
+php yii migrate
+yii migrate/up --migrationPath=@vendor/budyaga/yii2-users/migrations
+```
 
 Now you can then access the application through the following URL:
 ~~~
