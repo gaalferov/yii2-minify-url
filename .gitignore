@@ -30,7 +30,6 @@ phpunit.phar
 /logs
 
 #config files
-config/console-local.php
 config/db-local.php
 config/params-local.php
 config/web-local.php

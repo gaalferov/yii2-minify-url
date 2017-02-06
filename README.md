@@ -35,7 +35,6 @@ After you install the application, you have to conduct the following steps to in
 * Create a new database
 * Add new files with content
 ```
-config/console-local.php
 config/db-local.php
 config/params-local.php
 config/web-local.php
@@ -56,10 +55,64 @@ return [
     'tablePrefix' => 'nix_',
 ];
 ```
+* Add to file `config/web-local.php` your oauth data, for example:
+```php
+<?php
+return  [
+  'components' => [
+    'authClientCollection' => [
+      'clients' => [
+        'vkontakte' => [
+          'class' => 'budyaga\users\components\oauth\VKontakte',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+          'scope' => 'email'
+        ],
+        'google' => [
+          'class' => 'budyaga\users\components\oauth\Google',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'facebook' => [
+          'class' => 'budyaga\users\components\oauth\Facebook',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'github' => [
+          'class' => 'budyaga\users\components\oauth\GitHub',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+          'scope' => 'user:email, user'
+        ],
+        'linkedin' => [
+          'class' => 'budyaga\users\components\oauth\LinkedIn',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'live' => [
+          'class' => 'budyaga\users\components\oauth\Live',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'yandex' => [
+          'class' => 'budyaga\users\components\oauth\Yandex',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'twitter' => [
+          'class' => 'budyaga\users\components\oauth\Twitter',
+          'consumerKey' => 'XXX',
+          'consumerSecret' => 'XXX',
+        ],
+      ],
+    ],
+  ],
+];
+```
 * Apply migrations with console command:
 ```php
 php yii migrate
-yii migrate/up --migrationPath=@vendor/budyaga/yii2-users/migrations
+php yii migrate/up --migrationPath=@vendor/budyaga/yii2-users/migrations
 ```
 
 Now you can then access the application through the following URL:

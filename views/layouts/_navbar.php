@@ -3,7 +3,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 
 NavBar::begin([
-    'brandLabel' => 'Minifi URL',
+    'brandLabel' => 'Home',
     'brandUrl' => Yii::$app->homeUrl,
     'options' => [
         'class' => 'navbar-inverse navbar-fixed-top',

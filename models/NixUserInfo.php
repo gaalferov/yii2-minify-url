@@ -6,7 +6,7 @@ use Yii;
 use yii\helpers\BaseArrayHelper;
 
 /**
- * This is the model class for table "{{%user_info}}".
+ * This is the model class for table "{{%short_urls_info}}".
  *
  * @property integer $id
  * @property integer $short_url_id
@@ -24,7 +24,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{{%user_info}}';
+        return '{{%short_urls_info}}';
     }
 
     /**
@@ -34,7 +34,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
     {
         return [
             [['short_url_id', 'user_agent', 'user_ip', 'date'], 'required'],
-            [['short_url_id'], 'integer'],
+            [['short_url_id', 'user_id'], 'integer'],
             [['date'], 'safe'],
             [['user_agent', 'user_refer', 'user_ip'], 'string', 'max' => 255]
         ];
@@ -47,6 +47,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'user_id' => 'User ID',
             'short_url_id' => 'Short Url ID',
             'user_agent' => 'User Agent',
             'user_refer' => 'User Refer',
@@ -84,7 +85,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
      * @param $name
      * @return array
      */
-    public function getUsersInfo($users_info, $name)
+    public static function getUsersInfo($users_info, $name)
     {
         $array = [];
 

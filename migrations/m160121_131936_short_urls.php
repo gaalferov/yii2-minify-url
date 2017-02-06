@@ -22,8 +22,9 @@ class m160121_131936_short_urls extends Migration
             'counter' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
         ], $tableOptions);
 
-        $this->createTable('{{%user_info}}', [
+        $this->createTable('{{%short_urls_info}}', [
             'id' => Schema::TYPE_PK,
+            'user_id' => Schema::TYPE_INTEGER . ' NOT NULL DEFAULT 0',
             'short_url_id' => Schema::TYPE_INTEGER . ' NOT NULL',
             'user_agent' => Schema::TYPE_STRING . ' NOT NULL',
             'user_refer' => Schema::TYPE_STRING . ' DEFAULT NULL',
@@ -32,9 +33,9 @@ class m160121_131936_short_urls extends Migration
         ], $tableOptions);
 
         $this->createIndex('FK_short_code', '{{%short_urls}}', 'short_code', true);
-        $this->createIndex('FK_short_url_id', '{{%user_info}}', 'short_url_id');
+        $this->createIndex('FK_short_url_id', '{{%short_urls_info}}', 'short_url_id');
         $this->addForeignKey(
-            'FK_short_url_id', '{{%user_info}}', 'short_url_id', '{{%short_urls}}', 'id', 'CASCADE', 'CASCADE'
+            'FK_short_url_id', '{{%short_urls_info}}', 'short_url_id', '{{%short_urls}}', 'id', 'CASCADE', 'CASCADE'
         );
 
         $this->batchInsert('{{%short_urls}}', ['id', 'long_url', 'short_code', 'time_create', 'time_end', 'counter'], [
@@ -45,14 +46,14 @@ class m160121_131936_short_urls extends Migration
             [5, 'http://gaalferov.com/kontaktnaya-informaciya.html', 'toAORu', '2016-01-20', NULL, 0],
             [6, 'http://gaalferov.com/veb-programmirovanie-skripty/dorabotka-internet-magazina-natali-hair-2015.html?Itemid=0', '5PgExn', '2016-01-20', NULL, 6],
         ]);
-        $this->batchInsert('{{%user_info}}', ['id', 'short_url_id', 'user_agent', 'user_refer', 'user_ip', 'date'], [
-            [1, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/?page=1', '127.0.0.1', '2016-01-20'],
-            [2, 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/?page=2', '127.0.0.1', '2016-01-18'],
-            [3, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/', '127.0.0.1', '2016-01-21'],
-            [4, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/', '127.0.0.1', '2016-01-21'],
-            [5, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', NULL, '127.0.0.1', '2016-01-21'],
-            [6, 6, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0', NULL, '127.0.0.1', '2016-01-21'],
-            [7, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/index-test.php', '127.0.0.1', '2016-01-21'],
+        $this->batchInsert('{{%short_urls_info}}', ['id', 'user_id', 'short_url_id', 'user_agent', 'user_refer', 'user_ip', 'date'], [
+            [1, 0, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/?page=1', '127.0.0.1', '2016-01-20'],
+            [2, 0, 1, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/?page=2', '127.0.0.1', '2016-01-18'],
+            [3, 0, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/', '127.0.0.1', '2016-01-21'],
+            [4, 0, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/', '127.0.0.1', '2016-01-21'],
+            [5, 0, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', NULL, '127.0.0.1', '2016-01-21'],
+            [6, 0, 6, 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0', NULL, '127.0.0.1', '2016-01-21'],
+            [7, 0, 6, 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36', 'http://yii2-front.loc/index-test.php', '127.0.0.1', '2016-01-21'],
         ]);
 
 
@@ -60,7 +61,7 @@ class m160121_131936_short_urls extends Migration
 
     public function down()
     {
-        $this->dropTable('{{%user_info}}');
+        $this->dropTable('{{%short_urls_info}}');
         $this->dropTable('{{%short_urls}}');
     }
 
