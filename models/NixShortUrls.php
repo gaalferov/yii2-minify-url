@@ -12,6 +12,7 @@ use linslin\yii2\curl;
  * This is the model class for table "{{%short_urls}}".
  *
  * @property integer $id
+ * @property integer $user_id
  * @property string $long_url
  * @property string $short_code
  * @property string $time_create
@@ -40,7 +41,7 @@ class NixShortUrls extends \yii\db\ActiveRecord
             [['long_url'], 'required'],
             [['long_url'], 'url'],
             [['time_create', 'time_end'], 'safe'],
-            [['counter'], 'integer'],
+            [['counter', 'user_id'], 'integer'],
             [['short_code'], 'string', 'max' => 6],
             [['short_code'], 'unique']
         ];
@@ -53,6 +54,7 @@ class NixShortUrls extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+            'user_id' => 'User ID',
             'long_url' => 'Long Url',
             'short_code' => 'Short Code',
             'time_create' => 'Created Time',
@@ -123,5 +125,24 @@ class NixShortUrls extends \yii\db\ActiveRecord
 
         if ($curl->responseCode != 200)
             throw new HttpException(400, 'Something is wrong with your URL. Status code: ' . $curl->responseCode);
+    }
+
+  /**
+   * @return mixed
+   */
+    public function getTotalSumCounter()
+    {
+      $query = (new \yii\db\Query())->from(self::tableName());
+      return $query->sum('counter');
+    }
+
+  /**
+   * @return int|string
+   */
+    public function getTotalUrls()
+    {
+      return (new \yii\db\Query())
+        ->from(self::tableName())
+        ->count();
     }
 }

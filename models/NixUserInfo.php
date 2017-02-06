@@ -34,7 +34,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
     {
         return [
             [['short_url_id', 'user_agent', 'user_ip', 'date'], 'required'],
-            [['short_url_id', 'user_id'], 'integer'],
+            [['short_url_id'], 'integer'],
             [['date'], 'safe'],
             [['user_agent', 'user_refer', 'user_ip'], 'string', 'max' => 255]
         ];
@@ -47,7 +47,6 @@ class NixUserInfo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'user_id' => 'User ID',
             'short_url_id' => 'Short Url ID',
             'user_agent' => 'User Agent',
             'user_refer' => 'User Refer',

@@ -25,14 +25,14 @@ $this->title = 'Business URLs';
         </div>
         <div class="col-lg-5 jumbotron">
                 <p>Site statistics:</p>
-                <div class="row text-uppercase">
+                <div class="row text-lowercase">
                     <div class="col-lg-6 text-center">
-                        <p class="text-center"><mark>SELECT COUNT(id) FROM `nix_short_urls`</mark></p>
+                        <p class="text-center"><?=$model_url->totalUrls?></p>
                         <p class="text-center"><small>Total Short Urls</small></p>
                     </div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-5 text-center">
-                        <p class="text-center"><?=$pagination->totalCount?></p>
+                        <p class="text-center"><?=$model_url->totalSumCounter?></p>
                         <p class="text-center"><small>Total Url Visits</small></p>
                     </div>
                 </div>
@@ -49,7 +49,6 @@ $this->title = 'Business URLs';
                     <tr class="text-uppercase">
                         <th>Original url</th>
                         <th>Created</th>
-                        <th>User</th>
                         <th>Clicks</th>
                         <th>Short URL</th>
                         <th></th>
@@ -63,9 +62,6 @@ $this->title = 'Business URLs';
                             </td>
                             <td>
                                 <div><?= $url->time_create ?></div>
-                            </td>
-                            <td class="text-center">
-                                -
                             </td>
                             <td class="text-center">
                                 <div><?= $url->counter ?></div>
