@@ -17,7 +17,7 @@ $this->title = 'Business URLs';
             <?php $form = ActiveForm::begin(); ?>
             <?= $form->field($model_url, 'long_url')->input('url', ['placeholder' => 'http://yousite.com/'])->label('Paste your original URL here:') ?>
             <?= Html::label('Disable short url?', 'NixShortUrls[time_end]') ?>
-            <?= Html::radioList('NixShortUrls[time_end]', '', ['' => 'Never', date('Y-m-d', strtotime('+1 week')) => 'One week', date('Y-m-d', strtotime('+1 month')) => 'One month'], ['tag' => 'div id="NixShortUrls[time_end]"']) ?>
+            <?= Html::radioList('NixShortUrls[time_end]', '', ['' => 'Never', date('Y-m-d H:i:s', strtotime('+1 week')) => 'One week', date('Y-m-d H:i:s', strtotime('+1 month')) => 'One month'], ['tag' => 'div id="NixShortUrls[time_end]"']) ?>
             <div class="form-group">
                 <?= Html::submitButton('Shorten URL', ['class' => 'btn btn-primary']) ?>
             </div>

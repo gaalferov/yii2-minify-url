@@ -112,7 +112,6 @@ return  [
 * Apply migrations with console command:
 ```php
 php yii migrate
-php yii migrate/up --migrationPath=@vendor/budyaga/yii2-users/migrations
 ```
 
 Now you can then access the application through the following URL:

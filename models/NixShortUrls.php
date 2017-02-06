@@ -96,7 +96,7 @@ class NixShortUrls extends \yii\db\ActiveRecord
 
         if ($url === null) {
             throw new NotFoundHttpException('This short code not found:' . $code);
-        } else if (!is_null($url['time_end']) && date('Y-m-d') > $url['time_end']) {
+        } else if (!is_null($url['time_end']) && date("Y-m-d H:i:s") > $url['time_end']) {
             throw new NotAcceptableHttpException('This short code was disabled by the end time ' . $url['time_end']);
         }
 

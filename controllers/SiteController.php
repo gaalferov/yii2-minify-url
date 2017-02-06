@@ -41,7 +41,7 @@ class SiteController extends Controller
                 $model_url->checkUrl($model_url['long_url']);
                 $model_url->setAttributes([
                     'short_code' => $model_url->genShortCode(),
-                    'time_create' => date('Y-m-d')
+                    'time_create' => date("Y-m-d H:i:s")
                 ]);
                 $model_url->save();
                 return $this->refresh();
@@ -99,9 +99,7 @@ class SiteController extends Controller
         $url->updateCounters(['counter' => 1]);
 
         $user_info = parse_user_agent();
-      //TODO Add use country and city
-      $ip = Yii::$app->geoip->ip();
-      $ip = Yii::$app->geoip->ip(Yii::$app->request->userIP);
+        $user_ip = Yii::$app->geoip->ip();
 
         $model_info->setAttributes([
             'short_url_id' => $url['id'],
@@ -109,7 +107,9 @@ class SiteController extends Controller
             'user_agent' => $user_info['browser'] . ' ' . $user_info['version'],
             'user_refer' => Yii::$app->request->referrer,
             'user_ip' => Yii::$app->request->userIP,
-            'date' => date('Y-m-d')
+            'user_country' => $user_ip->country,
+            'user_city' => $user_ip->city,
+            'date' => date("Y-m-d")
         ]);
         $model_info->save();
 
