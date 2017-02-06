@@ -98,9 +98,15 @@ class SiteController extends Controller
         $url = NixShortUrls::validateShortCode($code);
         $url->updateCounters(['counter' => 1]);
 
+        $user_info = parse_user_agent();
+      //TODO Add use country and city
+      $ip = Yii::$app->geoip->ip();
+      $ip = Yii::$app->geoip->ip(Yii::$app->request->userIP);
+
         $model_info->setAttributes([
             'short_url_id' => $url['id'],
-            'user_agent' => Yii::$app->request->userAgent,
+            'user_platform' => $user_info['platform'],
+            'user_agent' => $user_info['browser'] . ' ' . $user_info['version'],
             'user_refer' => Yii::$app->request->referrer,
             'user_ip' => Yii::$app->request->userIP,
             'date' => date('Y-m-d')

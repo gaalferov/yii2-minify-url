@@ -49,8 +49,8 @@ $this->title = 'Business URLs';
                     <tr class="text-uppercase">
                         <th>Original url</th>
                         <th>Created</th>
-                        <th>Clicks</th>
-                        <th>Short URL</th>
+                        <th class="text-center">Clicks</th>
+                        <th class="text-center">Short URL</th>
                         <th></th>
                     </tr>
                     </thead>

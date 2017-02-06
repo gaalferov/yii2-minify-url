@@ -72,6 +72,9 @@ $config = [
         'authClientCollection' => [
             'class' => 'yii\authclient\Collection',
         ],
+        'geoip' => [
+          'class' => 'lysenkobv\GeoIP\GeoIP'
+        ],
     ],
     'modules' => [
         'user' => [

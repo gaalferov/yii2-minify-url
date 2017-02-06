@@ -18,7 +18,9 @@
         "yiisoft/yii2-authclient": "*",
         "scotthuangzl/yii2-google-chart": "dev-master",
         "linslin/yii2-curl": "*",
-        "budyaga/yii2-users": "*"
+        "budyaga/yii2-users": "*",
+        "donatj/phpuseragentparser": "*",
+        "lysenkobv/yii2-geoip": "~1.0"
     },
     "require-dev": {
         "codeception/codeception": "*",
