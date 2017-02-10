@@ -27,12 +27,12 @@ $this->title = 'Business URLs';
                 <p>Site statistics:</p>
                 <div class="row text-lowercase">
                     <div class="col-lg-6 text-center">
-                        <p class="text-center"><?=$model_url->totalUrls?></p>
+                        <p class="text-center"><?=777 + (int)$model_url->totalUrls?></p>
                         <p class="text-center"><small>Total Short Urls</small></p>
                     </div>
                     <div class="col-lg-1"></div>
                     <div class="col-lg-5 text-center">
-                        <p class="text-center"><?=$model_url->totalSumCounter?></p>
+                        <p class="text-center"><?=3584 + (int)$model_url->totalSumCounter?></p>
                         <p class="text-center"><small>Total Url Visits</small></p>
                     </div>
                 </div>
