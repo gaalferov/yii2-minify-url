@@ -67,6 +67,34 @@ class SiteController extends Controller
 
     }
 
+    /*public function actionIndex()
+    {
+        $model_url = new NixShortUrls();
+
+        //save url
+        if ($model_url->load(Yii::$app->request->post())) {
+            if ($model_url->validate()) {
+                $model_url->checkUrl($model_url['long_url']);
+                $model_url->setAttributes([
+                  'short_code' => $model_url->genShortCode(),
+                  'time_create' => date("Y-m-d H:i:s")
+                ]);
+                $model_url->save();
+                return $this->refresh();
+            }
+        }
+
+        $short_urls = $model_url::find()->addOrderBy('id DESC')
+          ->limit(25)
+          ->all();
+
+        return $this->render('index', [
+          'short_urls' => $short_urls,
+          'model_url' => $model_url
+        ]);
+
+    }*/
+
     /**
      * @param $code
      * @return string

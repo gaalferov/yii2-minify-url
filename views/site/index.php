@@ -44,7 +44,7 @@ $this->title = 'Business URLs';
             <?php if (!empty($short_urls)): ?>
             <div class="col-lg-12 table-responsive">
                 <table cellspacing="0" class="table table-hover">
-                    <caption>Public URLS:</caption>
+                    <caption>The last 25 public URLS:</caption>
                     <thead>
                     <tr class="text-uppercase">
                         <th>Original url</th>
@@ -67,7 +67,7 @@ $this->title = 'Business URLs';
                                 <div><?= $url->counter ?></div>
                             </td>
                             <td class="text-center">
-                                <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?= $url->short_code ?></a>
+                                <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?=  Url::to(['site/forward', 'code' => $url->short_code], true) ?></a>
                             </td>
                             <td class="text-right">
                                 <a href="<?=  Url::to(['site/details', 'code' => $url->short_code]) ?>">Analytics</a>
@@ -83,4 +83,4 @@ $this->title = 'Business URLs';
 
 </div><!-- index -->
 
-<?= LinkPager::widget(['pagination' => $pagination]) ?>
+<?//= LinkPager::widget(['pagination' => $pagination]) ?>
