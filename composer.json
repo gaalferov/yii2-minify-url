@@ -20,10 +20,13 @@
         "linslin/yii2-curl": "*",
         "budyaga/yii2-users": "*",
         "donatj/phpuseragentparser": "*",
-        "lysenkobv/yii2-geoip": "~1.0"
+        "lysenkobv/yii2-geoip": "~1.0",
+        "codeception/codeception": "*",
+        "codeception/specify": "*",
+        "codeception/verify": "*",
+        "se/selenium-server-standalone": "*"
     },
     "require-dev": {
-        "codeception/codeception": "*",
         "yiisoft/yii2-debug": "*",
         "yiisoft/yii2-gii": "*",
         "yiisoft/yii2-faker": "*"
