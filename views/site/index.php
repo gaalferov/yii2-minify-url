@@ -13,7 +13,7 @@ $this->title = 'Business URLs';
 <div class="site-index">
 
     <div class="row">
-        <div class="col-lg-7 jumbotron">
+        <div class="col-xs-12 col-lg-7 jumbotron">
             <?php $form = ActiveForm::begin(); ?>
             <?= $form->field($model_url, 'long_url')->input('url', ['placeholder' => 'http://yousite.com/'])->label('Paste your original URL here:') ?>
             <?= Html::label('Disable short url?', 'NixShortUrls[time_end]') ?>
@@ -23,7 +23,7 @@ $this->title = 'Business URLs';
             </div>
             <?php ActiveForm::end(); ?>
         </div>
-        <div class="col-lg-5 jumbotron">
+        <div class="hidden-xs col-lg-5 jumbotron">
                 <p>Site statistics:</p>
                 <div class="row text-lowercase">
                     <div class="col-lg-6 text-center">

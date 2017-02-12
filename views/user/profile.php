@@ -25,12 +25,20 @@ UsersAsset::register($this);
                     <?php $form = ActiveForm::begin(['id' => 'form-profile']); ?>
                     <?= $form->field($model, 'username') ?>
                     <?= $form->field($model, 'sex')->dropDownList(User::getSexArray()); ?>
-                    <?= $form->field($model, 'photo')->widget(Widget::className(), [
-                        'uploadUrl' => Url::toRoute('/user/user/uploadPhoto'),
-                    ]) ?>
 
                     <div class="form-group">
                         <?= Html::submitButton(Yii::t('users', 'SAVE'), ['class' => 'btn btn-primary', 'name' => 'profile-button']) ?>
+                    </div>
+                    <?php ActiveForm::end(); ?>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading"><?= Yii::t('users', 'CHANGE_EMAIL')?></div>
+                <div class="panel-body">
+                    <?php $form = ActiveForm::begin(['id' => 'form-email']); ?>
+                    <?= $form->field($changeEmailForm, 'new_email')->input('email'); ?>
+                    <div class="form-group">
+                        <?= Html::submitButton(Yii::t('users', 'SAVE'), ['class' => 'btn btn-primary', 'name' => 'email-button']) ?>
                     </div>
                     <?php ActiveForm::end(); ?>
                 </div>
@@ -54,17 +62,6 @@ UsersAsset::register($this);
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading"><?= Yii::t('users', 'CHANGE_EMAIL')?></div>
-                <div class="panel-body">
-                    <?php $form = ActiveForm::begin(['id' => 'form-email']); ?>
-                    <?= $form->field($changeEmailForm, 'new_email')->input('email'); ?>
-                    <div class="form-group">
-                        <?= Html::submitButton(Yii::t('users', 'SAVE'), ['class' => 'btn btn-primary', 'name' => 'email-button']) ?>
-                    </div>
-                    <?php ActiveForm::end(); ?>
-                </div>
-            </div>
 
             <div class="panel panel-default">
                 <div class="panel-heading"><?= Yii::t('users', 'KEYS')?></div>
