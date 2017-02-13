@@ -110,8 +110,8 @@ class m130524_201442_auth_init extends Migration
             [
                 Yii::t('users', 'MIGRATION_ADMINISTRATOR'),
                 Yii::$app->security->generateRandomString(),
-                Yii::$app->security->generatePasswordHash('administrator@example.com'),
-                'administrator@example.com',
+                Yii::$app->security->generatePasswordHash('admin'),
+                'admin@burl.pro',
                 User::STATUS_ACTIVE,
                 time(),
                 time()
@@ -119,9 +119,9 @@ class m130524_201442_auth_init extends Migration
             [
                 Yii::t('users', 'MIGRATION_MODERATOR'),
                 Yii::$app->security->generateRandomString(),
-                Yii::$app->security->generatePasswordHash('moderator@example.com'),
-                'moderator@example.com',
-                User::STATUS_ACTIVE,
+                Yii::$app->security->generatePasswordHash('moderator'),
+                'moderator@burl.pro',
+                User::STATUS_BLOCKED,
                 time(),
                 time()
             ]
