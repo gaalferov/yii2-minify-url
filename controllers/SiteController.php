@@ -38,6 +38,11 @@ class SiteController extends Controller
         //save url
         if ($model_url->load(Yii::$app->request->post())) {
             if ($model_url->validate()) {
+                if (!Yii::$app->user->isGuest) {
+                  $model_url->setAttributes([
+                    'user_id' => Yii::$app->user->id
+                  ]);
+                }
                 $model_url->checkUrl($model_url['long_url']);
                 $model_url->setAttributes([
                     'short_code' => $model_url->genShortCode(),
@@ -47,8 +52,13 @@ class SiteController extends Controller
                 return $this->refresh();
             }
         }
-        //get all urls
-        $query = NixShortUrls::find();
+
+        if (!Yii::$app->user->isGuest) {
+          $query = NixShortUrls::find()->where(['user_id' => Yii::$app->user->id]);
+        } else {
+          $query = NixShortUrls::find()->where(['user_id' => 0]);
+        }
+
         $pagination = new Pagination([
             'defaultPageSize' => 25,
             'totalCount' => $query->count(),
@@ -64,36 +74,7 @@ class SiteController extends Controller
             'model_url' => $model_url,
             'pagination' => $pagination,
         ]);
-
     }
-
-    /*public function actionIndex()
-    {
-        $model_url = new NixShortUrls();
-
-        //save url
-        if ($model_url->load(Yii::$app->request->post())) {
-            if ($model_url->validate()) {
-                $model_url->checkUrl($model_url['long_url']);
-                $model_url->setAttributes([
-                  'short_code' => $model_url->genShortCode(),
-                  'time_create' => date("Y-m-d H:i:s")
-                ]);
-                $model_url->save();
-                return $this->refresh();
-            }
-        }
-
-        $short_urls = $model_url::find()->addOrderBy('id DESC')
-          ->limit(25)
-          ->all();
-
-        return $this->render('index', [
-          'short_urls' => $short_urls,
-          'model_url' => $model_url
-        ]);
-
-    }*/
 
     /**
      * @param $code

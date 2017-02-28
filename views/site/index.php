@@ -41,10 +41,9 @@ $this->title = 'Business URLs';
 
     <div class="body-content">
         <div class="row">
-            <?php if (!empty($short_urls)): ?>
             <div class="col-lg-12 table-responsive">
                 <table cellspacing="0" class="table table-hover">
-                    <caption>The last 25 public URLS:</caption>
+                    <caption><?= (!Yii::$app->user->isGuest) ? 'Your URLS' : 'The last public URLS';?>:</caption>
                     <thead>
                     <tr class="text-uppercase">
                         <th>Original url</th>
@@ -55,32 +54,40 @@ $this->title = 'Business URLs';
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($short_urls as $url): ?>
+                    <?php if (!empty($short_urls)): ?>
+                        <?php foreach ($short_urls as $url): ?>
+                            <tr>
+                                <td>
+                                    <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
+                                </td>
+                                <td>
+                                    <div><?= $url->time_create ?></div>
+                                </td>
+                                <td class="text-center">
+                                    <div><?= $url->counter ?></div>
+                                </td>
+                                <td class="text-center">
+                                    <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?=  Url::to(['site/forward', 'code' => $url->short_code], true) ?></a>
+                                </td>
+                                <td class="text-right">
+                                    <a href="<?=  Url::to(['site/details', 'code' => $url->short_code]) ?>">Analytics</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr>
-                            <td>
-                                <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
-                            </td>
-                            <td>
-                                <div><?= $url->time_create ?></div>
-                            </td>
-                            <td class="text-center">
-                                <div><?= $url->counter ?></div>
-                            </td>
-                            <td class="text-center">
-                                <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?=  Url::to(['site/forward', 'code' => $url->short_code], true) ?></a>
-                            </td>
-                            <td class="text-right">
-                                <a href="<?=  Url::to(['site/details', 'code' => $url->short_code]) ?>">Analytics</a>
+                            <td colspan="5">
+                                You don't have private urls
                             </td>
                         </tr>
-                    <?php endforeach; ?>
+                    <?php endif; ?>
                     </tbody>
                 </table>
             </div>
-            <?php endif; ?>
+
         </div>
     </div>
 
 </div><!-- index -->
 
-<?//= LinkPager::widget(['pagination' => $pagination]) ?>
+<?= LinkPager::widget(['pagination' => $pagination]) ?>
