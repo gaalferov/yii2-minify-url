@@ -13,7 +13,7 @@ class IndexPageCest
     // tests
     public function testUrlField(AcceptanceTester $I)
     {
-        $I->see('Paste your long URL here');
+        $I->see('Paste your original URL here');
 
     }
     public function testIncorrectUrl(AcceptanceTester $I)
@@ -22,7 +22,7 @@ class IndexPageCest
         $I->click('Shorten URL');
         $I->see('Something is wrong with your URL');
     }
-    public function testCorrectEmail(AcceptanceTester $I)
+    public function testCorrectUrl(AcceptanceTester $I)
     {
         $I->fillField('NixShortUrls[long_url]', 'http://codeception.com');
         $I->click('Shorten URL');
