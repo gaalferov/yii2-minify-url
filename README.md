@@ -13,7 +13,7 @@ What you can do
 * Input your long url and get short
 * View statistics (Google Charts)
 
-![Main page](https://camo.githubusercontent.com/e4a645ad484fdc78ee2bb753ead0d98ea2c0b6dc/687474703a2f2f732e6761616c6665726f762e636f6d2f7765622f696d6167652f6d61696e2e6a7067)
+![Main page](https://burl.pro/images/example.jpg)
 
 ### Install via Composer
 ----
