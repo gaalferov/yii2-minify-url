@@ -68,7 +68,8 @@ $config = [
         '/unbind/<id:[\w\-]+>' => '/user/auth/unbind',
         '/oauth/<authclient:[\w\-]+>' => '/user/auth/index',
         '<code:\w+>' => 'site/forward',
-        'details/<code:\w+>' => 'site/details'
+        'details/<code:\w+>' => 'site/details',
+        '/' => 'site/index',
       ],
     ],
     'authManager' => [
