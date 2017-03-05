@@ -100,6 +100,7 @@ $config = [
           'class' => 'yii\i18n\PhpMessageSource',
           'basePath' => '@app/messages',
           'sourceLanguage' => 'en',
+          'forceTranslation' => true,
         ],
       ],
     ],

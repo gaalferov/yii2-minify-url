@@ -18,5 +18,5 @@
  */
 return [
   'BURL_TITLE' => 'Business URLs (Short urls)',
-  'LANG_CHANGED' => 'Language changed successful',
+  'LANG_CHANGED' => 'Language successfully changed',
 ];
