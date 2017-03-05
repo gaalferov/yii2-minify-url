@@ -113,7 +113,7 @@ class SiteController extends Controller
         $model_info->setAttributes([
             'short_url_id' => $url['id'],
             'user_platform' => $user_info['platform'],
-            'user_agent' => $user_info['browser'] . ' ' . $user_info['version'],
+            'user_agent' => $user_info['browser'],
             'user_refer' => Yii::$app->request->referrer,
             'user_ip' => Yii::$app->request->userIP,
             'user_country' => $user_ip->country,

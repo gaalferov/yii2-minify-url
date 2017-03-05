@@ -78,6 +78,9 @@ class NixUserInfo extends \yii\db\ActiveRecord
         return [
             'user_agent' => static::getUsersInfo($users_info, 'user_agent'),
             'user_refer' => static::getUsersInfo($users_info, 'user_refer'),
+            'user_platform' => static::getUsersInfo($users_info, 'user_platform'),
+            'user_country' => static::getUsersInfo($users_info, 'user_country'),
+            'user_city' => static::getUsersInfo($users_info, 'user_city'),
             'date' => static::getUsersInfo($users_info, 'date')
         ];
     }
