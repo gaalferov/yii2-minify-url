@@ -13,7 +13,13 @@ $db = array_merge(
 $config = [
   'id' => 'basic',
   'basePath' => dirname(__DIR__),
-  'bootstrap' => ['log'],
+  'bootstrap' => [
+    'log',
+    [
+      'class' => 'app\components\LanguageSelector',
+      'supportedLanguages' => ['en', 'ru'],
+    ],
+  ],
   'components' => [
     'request' => [
       // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -67,9 +73,11 @@ $config = [
         '/confirmEmail' => '/user/user/confirm-email',
         '/unbind/<id:[\w\-]+>' => '/user/auth/unbind',
         '/oauth/<authclient:[\w\-]+>' => '/user/auth/index',
-        '<code:\w+>' => 'site/forward',
+        '/lang' => 'site/language',
         'details/<code:\w+>' => 'site/details',
+        '<code:\w+>' => 'site/forward',
         '/' => 'site/index',
+
       ],
     ],
     'authManager' => [
@@ -85,6 +93,15 @@ $config = [
     ],
     'geoip' => [
       'class' => 'lysenkobv\GeoIP\GeoIP'
+    ],
+    'i18n' => [
+      'translations' => [
+        '*' => [
+          'class' => 'yii\i18n\PhpMessageSource',
+          'basePath' => '@app/messages',
+          'sourceLanguage' => 'en',
+        ],
+      ],
     ],
   ],
   'modules' => [

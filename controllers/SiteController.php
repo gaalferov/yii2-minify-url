@@ -4,13 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\Cookie;
 use yii\data\Pagination;
 use app\models\NixShortUrls;
 use app\models\NixUserInfo;
 
 class SiteController extends Controller
 {
-
     /**
      * @return array
      */
@@ -123,6 +123,20 @@ class SiteController extends Controller
         $model_info->save();
 
         return $this->redirect($url['long_url']);
+    }
+
+    public function actionLanguage() {
+        $language = Yii::$app->request->post('language');
+        Yii::$app->language = $language;
+
+        $languageCookie = new Cookie([
+          'name' => 'language',
+          'value' => $language,
+          'expire' => time() + 60 * 60 * 24 * 30, // 30 days
+        ]);
+        Yii::$app->response->cookies->add($languageCookie);
+        Yii::$app->session->setFlash('success', Yii::t('burl', 'LANG_CHANGED'));
+        $this->redirect(Yii::$app->request->referrer);
     }
 
 }

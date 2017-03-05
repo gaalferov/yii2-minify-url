@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\models\NixShortUrls */
 /* @var $form ActiveForm */
-$this->title = 'Business URLs';
+$this->title = Yii::t('burl', 'BURL_TITLE');
 ?>
 <div class="site-index">
 
