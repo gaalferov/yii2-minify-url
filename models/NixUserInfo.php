@@ -46,15 +46,15 @@ class NixUserInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'short_url_id' => 'Short Url ID',
-            'user_platform' => 'User Platform',
-            'user_agent' => 'User Agent',
-            'user_refer' => 'User Refer',
-            'user_ip' => 'User Ip',
-            'user_country' => 'User Country',
-            'user_city' => 'User City',
-            'date' => 'Date',
+            'id' => Yii::t('burl', 'ID'),
+            'short_url_id' => Yii::t('burl', 'SHORT_URL_ID'),
+            'user_platform' => Yii::t('burl', 'USER_PLATFORM'),
+            'user_agent' => Yii::t('burl', 'USER_AGENT'),
+            'user_refer' => Yii::t('burl', 'USER_REFER'),
+            'user_ip' => Yii::t('burl', 'USER_IP'),
+            'user_country' => Yii::t('burl', 'USER_COUNTRY'),
+            'user_city' => Yii::t('burl', 'USER_CITY'),
+            'date' => Yii::t('burl', 'DATE'),
         ];
     }
 

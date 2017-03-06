@@ -7,11 +7,11 @@ use scotthuangzl\googlechart\GoogleChart;
 use yii\helpers\Url;
 use yii\grid\GridView;
 
-$this->title = 'Details for short code - ' . $url->short_code;
+$this->title = Yii::t('burl', 'DETAIL_SHORT_CODE') . $url->short_code;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<h1><?= Html::encode('Details for short code - ' . Url::base(true) . Url::to(['site/forward', 'code' => $url->short_code])) ?></h1>
+<h1><?= Html::encode(Yii::t('burl', 'DETAIL_SHORT_CODE') . Url::base(true) . Url::to(['site/forward', 'code' => $url->short_code])) ?></h1>
 <div class="row">
   <div class="col-md-12">
     <?php
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
     echo GoogleChart::widget(array('visualization' => 'PieChart',
       'data' => $details['user_platform'],
       'options' => [
-        'title' => 'Platforms',
+        'title' => Yii::t('burl', 'USER_PLATFORM'),
         'is3D' => true,
       ]));
     ?>
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
     echo GoogleChart::widget(array('visualization' => 'PieChart',
       'data' => $details['user_agent'],
       'options' => [
-        'title' => 'Browsers',
+        'title' => Yii::t('burl', 'USER_AGENT'),
         'is3D' => true,
       ]
     ));
@@ -69,8 +69,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <table cellspacing="0" class="table table-hover">
       <thead>
       <tr class="text-uppercase">
-        <th>Refer url</th>
-        <th class="text-center">Count</th>
+        <th><?= Yii::t('burl', 'REFER_URL') ?></th>
+        <th class="text-center"><?= Yii::t('burl', 'REFER_COUNT') ?></th>
       </tr>
       </thead>
       <tbody>
@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <td>
               <a href="<?= Html::encode("{$refer[0]}") ?>" target="_blank" rel="nofollow"><?= Html::encode("{$refer[0]}") ?></a>
             </td>
-            <td>
+            <td class="text-center">
               <div><?= $refer[1] ?></div>
             </td>
           </tr>
@@ -88,7 +88,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <?php else: ?>
         <tr>
           <td colspan="2">
-            You don't have private urls
+            <?= Yii::t('burl', 'EMPTY_ANALYTIC_REFERS') ?>
           </td>
         </tr>
       <?php endif; ?>

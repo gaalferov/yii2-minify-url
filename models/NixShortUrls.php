@@ -58,13 +58,13 @@ class NixShortUrls extends \yii\db\ActiveRecord
   public function attributeLabels()
   {
     return [
-      'id' => 'ID',
-      'user_id' => 'User ID',
-      'long_url' => 'Long Url',
-      'short_code' => 'Short Code',
-      'time_create' => 'Created Time',
-      'time_end' => 'Time End',
-      'counter' => 'Counter',
+      'id' => Yii::t('burl', 'ID'),
+      'user_id' => Yii::t('burl', 'USER_ID'),
+      'long_url' => Yii::t('burl', 'LONG_URL'),
+      'short_code' => Yii::t('burl', 'SHORT_CODE'),
+      'time_create' => Yii::t('burl', 'CREATED_TIME'),
+      'time_end' => Yii::t('burl', 'TIME_END'),
+      'counter' => Yii::t('burl', 'COUNTER'),
     ];
   }
 
@@ -94,15 +94,15 @@ class NixShortUrls extends \yii\db\ActiveRecord
   public static function validateShortCode($code)
   {
     if (!preg_match('|^[0-9a-zA-Z]{6,6}$|', $code)) {
-      throw new HttpException(400, 'Please enter valid short code');
+      throw new HttpException(400, Yii::t('burl', 'ENTER_VALID_SHORT_CODE'));
     }
 
     $url = NixShortUrls::find()->where(['short_code' => $code])->one();
 
     if ($url === null) {
-      throw new NotFoundHttpException('This short code not found:' . $code);
+      throw new NotFoundHttpException(Yii::t('burl', 'SHORT_CODE_NOT_FOUND') . $code);
     } else if (!is_null($url['time_end']) && date("Y-m-d H:i:s") > $url['time_end']) {
-      throw new NotAcceptableHttpException('This short code was disabled by the end time ' . $url['time_end']);
+      throw new NotAcceptableHttpException(Yii::t('burl', 'SHORT_CODE_END_TIME') . $url['time_end']);
     }
 
     return $url;
@@ -129,7 +129,7 @@ class NixShortUrls extends \yii\db\ActiveRecord
     $curl->get($url);
 
     if ($curl->responseCode != 200)
-      throw new HttpException(400, 'Something is wrong with your URL. Status code: ' . $curl->responseCode);
+      throw new HttpException(400, Yii::t('burl', 'SHORT_CODE_ERROR_URL') . $curl->responseCode);
   }
 
   /**
