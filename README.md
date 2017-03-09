@@ -13,7 +13,7 @@ What you can do
 * Input your long url and get short
 * View statistics (Google Charts)
 
-![Main page](https://burl.pro/images/example.jpg)
+![Example](https://burl.pro/images/example.gif)
 
 ### Install via Composer
 ----
