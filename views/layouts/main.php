@@ -17,6 +17,11 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php
+    Yii::$app->view->registerLinkTag([
+      'rel' => 'shortcut icon',
+      'href' => '/favicon.ico',
+      'type' => 'image/x-icon',
+    ]);
     Yii::$app->view->registerMetaTag([
       'name' => 'description',
       'content' => Yii::t('burl', 'MAIN_DESCRIPTION')

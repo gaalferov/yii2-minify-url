@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /lang
+Disallow: /logout
+Disallow: /?page*
+Host: burl.pro
