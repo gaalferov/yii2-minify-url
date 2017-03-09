@@ -1,0 +1,42 @@
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - PhpBrowser
+        - Filesystem
+        - \Helper\Acceptance
+        - \Helper\ConfigHelper
+    config:
+        PhpBrowser:
+            url: 'http://burl.dev'
+        \Helper\ConfigHelper:
+            TESTUser: 'sa_user'
+            TESTPasswd: 'sa_pswd'
+
+env:
+    phantom:
+         modules:
+             disabled:
+                 - PhpBrowser
+             enabled:
+                 - WebDriver
+             config:
+                 WebDriver:
+                     url: 'http://burl.dev'
+                     browser: 'phantomjs'
+                     capabilities:
+                         javascriptEnabled: true
+
+    firefox:
+         modules:
+              disabled:
+                  - PhpBrowser
+              enabled:
+                  - WebDriver
+              config:
+                  WebDriver:
+                      url: 'http://burl.dev'
+                      browser: 'firefox'
+                      host: selenium
+                      clear_cookies: true
+                      capabilities:
+                          javascriptEnabled: true

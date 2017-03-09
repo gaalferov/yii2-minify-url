@@ -1,8 +1,8 @@
 {
     "name": "gaalferov/yii2-minify-url",
-    "description": "Yii 2 Minify-URL Project (Shortener)",
+    "description": "Project on YII2 framework for create short url (url shortener)",
     "keywords": ["yii2", "framework", "minify", "shortener"],
-    "homepage": "http://gaalferov.com/",
+    "homepage": "http://burl.pro/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
@@ -11,7 +11,7 @@
     },
     "minimum-stability": "stable",
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
@@ -22,9 +22,9 @@
         "donatj/phpuseragentparser": "*",
         "lysenkobv/yii2-geoip": "~1.0",
         "codeception/codeception": "*",
+        "codeception/remote-debug": "*",
         "codeception/specify": "*",
-        "codeception/verify": "*",
-        "se/selenium-server-standalone": "*"
+        "codeception/verify": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

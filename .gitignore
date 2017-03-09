@@ -33,4 +33,17 @@ phpunit.phar
 config/db-local.php
 config/params-local.php
 config/web-local.php
+
+#tests
+tests/_data/*
+tests/_log/*
+tests/_temp/*
+tests/_envs/local.yml
 tests/_output/*
+tests/acceptance/_bootstrap.php
+tests/functional/_bootstrap.php
+tests/_support/_generated/*
+tests/unit/_bootstrap.php
+tests/acceptance.suite.yml
+tests/functional.suite.yml
+tests/unit.suite.yml
