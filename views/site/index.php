@@ -23,7 +23,7 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
             </div>
             <?php ActiveForm::end(); ?>
         </div>
-        <div class="hidden-xs col-lg-5 jumbotron">
+        <div class="hidden-xs hidden-sm hidden-md col-lg-5 jumbotron">
                 <p><?= Yii::t('burl', 'SITE_STATISTICS') ?></p>
                 <div class="row text-lowercase">
                     <div class="col-lg-6 text-center">

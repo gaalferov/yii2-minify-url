@@ -18,6 +18,8 @@
  */
 return [
   'BURL_TITLE' => 'Business URLs (Short urls)',
+  'MAIN_DESCRIPTION' => 'If you have a long, cumbersome URL, you can "shorten" it. Create your short business url with analytics...',
+  'MAIN_KEYWORDS' => 'business, short, URLs, analytics, geo, refer, platform, browser, clicks',
   'LANG_CHANGED' => 'Language successfully changed',
   'ADD_URL' => 'Paste your original URL here:',
   'DISABLE_SHORT_URL' => 'Disable short url?',

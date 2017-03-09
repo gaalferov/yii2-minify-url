@@ -16,6 +16,16 @@ AppAsset::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <?php
+    Yii::$app->view->registerMetaTag([
+      'name' => 'description',
+      'content' => Yii::t('burl', 'MAIN_DESCRIPTION')
+    ]);
+    Yii::$app->view->registerMetaTag([
+      'name' => 'keywords',
+      'content' => Yii::t('burl', 'MAIN_KEYWORDS')
+    ]);
+    ?>
     <?php $this->head() ?>
 </head>
 <body>
