@@ -33,17 +33,7 @@ GETTING STARTED
 After you install the application, you have to conduct the following steps to initialize the installed application. You only need to do these once for all.
 
 * Create a new database
-* Add new files with content
-```
-config/db-local.php
-config/params-local.php
-config/web-local.php
-```
-```php
-<?php
-return [];
-```
-* Edit the file `config/db-local.php` with real data, for example:
+* Add and edit the file `config/db-local.php` with real data, for example:
 ```php
 <?php
 return [
