@@ -17,14 +17,8 @@ class IndexPageCest
     }
   }
 
-  protected function SetLang(AcceptanceTester $I)
-  {
-    $I->sendAjaxPostRequest('/lang', array('language' => 'en'));
-  }
-
   /**
    * @param AcceptanceTester $I
-   * @before  setAffiliateCookie
    */
   public function testUrlField(AcceptanceTester $I)
   {
@@ -38,7 +32,8 @@ class IndexPageCest
   {
     $I->fillField('NixShortUrls[long_url]', 'http://notcorrecturlrrrrrrr.asd');
     $I->click('Shorten URL');
-    $I->see('Something is wrong with your URL');
+    $I->waitForElementVisible('.site-error', 5);
+    $I->see('Bad Request', 'h1');
   }
 
   /**
@@ -48,6 +43,7 @@ class IndexPageCest
   {
     $I->fillField('NixShortUrls[long_url]', 'http://codeception.com');
     $I->click('Shorten URL');
-    $I->see('http://codeception.com');
+    $I->waitForElementVisible('.alert-success', 5);
+    $I->see('Congratulation! You are created new short url.');
   }
 }

@@ -50,7 +50,7 @@ return [
   'ENTER_VALID_SHORT_CODE' => 'Please enter valid short code',
   'SHORT_CODE_NOT_FOUND' =>  'This short code not found:',
   'SHORT_CODE_END_TIME' =>  'This short code was disabled by the end time ',
-  'SHORT_CODE_ERROR_URL' =>  'Something is wrong with your URL. Status code: ',
+  'SHORT_CODE_ERROR_URL' =>  'Something is wrong with your URL.',
   'DETAIL_SHORT_CODE' =>  'Details for short code - ',
   'EMPTY_ANALYTIC_REFERS' =>  'Empty refers url',
   'REFER_URL' =>  'Refer url',
