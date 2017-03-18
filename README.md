@@ -111,6 +111,34 @@ http://localhost/
 
 TESTS
 ---------------
+
+### You can use any platforms for run tests:
+ 
+#### Phantomj:
+* Install phantomjs (http://codeception.com/docs/modules/WebDriver)
+* Run in screen:
+
+phantomjs --webdriver=4444 --ignore-ssl-errors=yes --ssl-protocol=TLSv1
+
+#### Selenium:
+* Install Selenium Server  (http://codeception.com/docs/modules/WebDriver)
+* Run in screen:
+
+java -jar selenium-server-standalone-2.xx.xxx.jar
+
+#### Docker container
+```
+...
+selenium:
+  image: jesg/selenium:standalone
+  ports:
+   - 4444:4444
+   - 5910:5910
+...
+```
+
+#### Instruction:
+
 * Init codeception files:
 ```
 php vendor/bin/codecept bootstrap
@@ -118,10 +146,12 @@ php vendor/bin/codecept bootstrap
 * Change url to your project in file /tests/acceptance.suite.yml
 ```
 config:
-        PhpBrowser:
+...
             url: 'http://you_url.loc'
 ```
 * Run tests:
 ```
 php vendor/bin/codecept run
+php vendor/bin/codecept run --env phantom
+php vendor/bin/codecept run --env firefox
 ```
