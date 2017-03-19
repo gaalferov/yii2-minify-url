@@ -70,4 +70,6 @@ return [
   'USER_COUNTRY' => 'Country',
   'USER_CITY' => 'City',
   'DATE' => 'Date',
+  'ALL_URLS' => 'All URLs',
+  'UPDATE_SHORT_URL' => 'Update short url',
 ];

@@ -77,6 +77,7 @@ $config = [
         '/lang' => 'site/language',
         'details/<code:\w+>' => 'details/index',
         'url/add' => 'url/add',
+        '/url' => 'url/index',
         '<code:\w+>' => 'url/forward',
         '/' => 'site/index',
 

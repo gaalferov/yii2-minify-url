@@ -70,4 +70,6 @@ return [
   'USER_COUNTRY' => 'Страна',
   'USER_CITY' => 'Город',
   'DATE' => 'Дата',
+  'ALL_URLS' => 'Все ссылки',
+  'UPDATE_SHORT_URL' => 'Обновить краткую ссылку',
 ];
