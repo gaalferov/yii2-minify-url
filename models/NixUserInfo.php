@@ -3,7 +3,6 @@
 namespace app\models;
 
 use Yii;
-use yii\helpers\BaseArrayHelper;
 
 /**
  * This is the model class for table "{{%short_urls_info}}".
@@ -56,51 +55,5 @@ class NixUserInfo extends \yii\db\ActiveRecord
             'user_city' => Yii::t('burl', 'USER_CITY'),
             'date' => Yii::t('burl', 'DATE'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getShortUrl()
-    {
-        return $this->hasOne(ShortUrls::className(), ['id' => 'short_url_id']);
-    }
-
-    /**
-     * Build array to view in Google Charts
-     * @param $users_info
-     * @return array
-     */
-    public static function sortGCArray($users_info)
-    {
-        $users_info = BaseArrayHelper::toArray($users_info);
-
-        return [
-            'user_agent' => static::getUsersInfo($users_info, 'user_agent'),
-            'user_refer' => static::getUsersInfo($users_info, 'user_refer'),
-            'user_platform' => static::getUsersInfo($users_info, 'user_platform'),
-            'user_country' => static::getUsersInfo($users_info, 'user_country'),
-            'user_city' => static::getUsersInfo($users_info, 'user_city'),
-            'date' => static::getUsersInfo($users_info, 'date')
-        ];
-    }
-
-    /**
-     * @param $users_info
-     * @param $name
-     * @return array
-     */
-    public static function getUsersInfo($users_info, $name)
-    {
-        $array = [];
-
-        //get needed column
-        $users_info = array_filter(BaseArrayHelper::getColumn($users_info, $name, false));
-        $users_info = array_count_values($users_info);
-
-        foreach ($users_info as $key => $value)
-            $array[] = [$key, $value];
-
-        return $array;
     }
 }

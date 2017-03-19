@@ -14,7 +14,7 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
 
     <div class="row">
         <div class="col-xs-12 col-lg-7 jumbotron">
-            <?php $form = ActiveForm::begin(); ?>
+            <?php $form = ActiveForm::begin(['action' => '/url/add']); ?>
             <?= $form->field($model_url, 'long_url')->input('url', ['placeholder' => 'http://yousite.com/'])->label(Yii::t('burl', 'ADD_URL')) ?>
             <?= Html::label(Yii::t('burl', 'DISABLE_SHORT_URL'), 'NixShortUrls[time_end]') ?>
             <?= Html::radioList('NixShortUrls[time_end]', '', ['' => Yii::t('burl', 'TIME_NEVER_END'), date('Y-m-d H:i:s', strtotime('+1 week')) => Yii::t('burl', 'TIME_ONE_WEEK'), date('Y-m-d H:i:s', strtotime('+1 month')) => Yii::t('burl', 'TIME_ONE_MONTH')], ['tag' => 'div id="NixShortUrls[time_end]"']) ?>
@@ -66,10 +66,10 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
                                     <div><?= $url->counter ?></div>
                                 </td>
                                 <td class="text-center">
-                                    <a href="<?=  Url::to(['site/forward', 'code' => $url->short_code]) ?>" target="_blank"><?=  Url::to(['site/forward', 'code' => $url->short_code], true) ?></a>
+                                    <a href="<?=  Url::to(['url/forward', 'code' => $url->short_code]) ?>" target="_blank"><?=  Url::to(['url/forward', 'code' => $url->short_code], true) ?></a>
                                 </td>
                                 <td class="text-right">
-                                    <a href="<?=  Url::to(['site/details', 'code' => $url->short_code]) ?>"><?= Yii::t('burl', 'ANALYTICS') ?></a>
+                                    <a href="<?=  Url::to(['details/index', 'code' => $url->short_code]) ?>"><?= Yii::t('burl', 'ANALYTICS') ?></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

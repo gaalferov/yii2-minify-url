@@ -12,6 +12,7 @@ $db = array_merge(
 
 $config = [
   'id' => 'basic',
+  'name'=>'Business URLs',
   'basePath' => dirname(__DIR__),
   'bootstrap' => [
     'log',
@@ -74,14 +75,16 @@ $config = [
         '/unbind/<id:[\w\-]+>' => '/user/auth/unbind',
         '/oauth/<authclient:[\w\-]+>' => '/user/auth/index',
         '/lang' => 'site/language',
-        'details/<code:\w+>' => 'site/details',
-        '<code:\w+>' => 'site/forward',
+        'details/<code:\w+>' => 'details/index',
+        'url/add' => 'url/add',
+        '<code:\w+>' => 'url/forward',
         '/' => 'site/index',
 
       ],
     ],
     'authManager' => [
       'class' => 'yii\rbac\DbManager',
+      'defaultRoles' => ['user'],
     ],
     'user' => [
       'identityClass' => 'budyaga\users\models\User',
@@ -128,6 +131,7 @@ if (YII_ENV_DEV) {
   $config['bootstrap'][] = 'gii';
   $config['modules']['gii'] = [
     'class' => 'yii\gii\Module',
+    'allowedIPs' => ['127.0.0.1']
   ];
 }
 

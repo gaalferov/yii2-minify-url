@@ -6,6 +6,7 @@ use Yii;
 use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\NotAcceptableHttpException;
+use yii\helpers\BaseArrayHelper;
 use linslin\yii2\curl;
 
 /**
@@ -69,19 +70,15 @@ class NixShortUrls extends \yii\db\ActiveRecord
   }
 
   /**
-   * @return \yii\db\ActiveQuery
-   */
-  public function getUserInfos()
-  {
-    return $this->hasMany(UserInfo::className(), ['short_url_id' => 'id']);
-  }
-
-  /**
    * @return string
    */
   public function genShortCode()
   {
-    return substr(str_shuffle(ALLOWED_CHARS), 0, 6);
+    do
+      $shortCode = substr(str_shuffle(ALLOWED_CHARS), 0, 6);
+    while (NixShortUrls::find()->where(['short_code' => $shortCode])->one());
+
+    return $shortCode;
   }
 
   /**
@@ -150,5 +147,43 @@ class NixShortUrls extends \yii\db\ActiveRecord
     return NixShortUrls::getDb()->cache(function () {
       return NixShortUrls::find()->from(self::tableName())->count();
     }, self::CACHE_DURATION);
+  }
+
+  /**
+   * Build array to view in Google Charts
+   * @param $users_info
+   * @return array
+   */
+  public static function sortGCArray($users_info)
+  {
+    $users_info = BaseArrayHelper::toArray($users_info);
+
+    return [
+      'user_agent' => static::getUsersInfo($users_info, 'user_agent'),
+      'user_refer' => static::getUsersInfo($users_info, 'user_refer'),
+      'user_platform' => static::getUsersInfo($users_info, 'user_platform'),
+      'user_country' => static::getUsersInfo($users_info, 'user_country'),
+      'user_city' => static::getUsersInfo($users_info, 'user_city'),
+      'date' => static::getUsersInfo($users_info, 'date')
+    ];
+  }
+
+  /**
+   * @param $users_info
+   * @param $name
+   * @return array
+   */
+  public static function getUsersInfo($users_info, $name)
+  {
+    $array = [];
+
+    //get needed column
+    $users_info = array_filter(BaseArrayHelper::getColumn($users_info, $name, false));
+    $users_info = array_count_values($users_info);
+
+    foreach ($users_info as $key => $value)
+      $array[] = [$key, $value];
+
+    return $array;
   }
 }

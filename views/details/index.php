@@ -11,7 +11,7 @@ $this->title = Yii::t('burl', 'DETAIL_SHORT_CODE') . $url->short_code;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<h1><?= Html::encode(Yii::t('burl', 'DETAIL_SHORT_CODE') . Url::base(true) . Url::to(['site/forward', 'code' => $url->short_code])) ?></h1>
+<h1><?= Html::encode(Yii::t('burl', 'DETAIL_SHORT_CODE') . Url::base(true) . Url::to(['url/forward', 'code' => $url->short_code])) ?></h1>
 <div class="row">
   <div class="col-md-12">
     <?php
