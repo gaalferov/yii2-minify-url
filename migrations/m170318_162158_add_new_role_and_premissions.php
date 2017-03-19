@@ -3,13 +3,22 @@
 use yii\db\Schema;
 use yii\db\Migration;
 use yii\rbac\Item;
-use budyaga\users\Module;
 
 class m170318_162158_add_new_role_and_premissions extends Migration
 {
   public function up()
   {
-    Module::registerTranslations();
+
+    if (!isset(Yii::$app->i18n->translations['users']) && !isset(Yii::$app->i18n->translations['users/*'])) {
+      Yii::$app->i18n->translations['users'] = [
+        'class' => 'yii\i18n\PhpMessageSource',
+        'basePath' => '@app/messages',
+        'forceTranslation' => true,
+        'fileMap' => [
+          'users' => 'users.php'
+        ]
+      ];
+    }
 
     $this->insert('{{%auth_rule}}', [
       'name' => 'canDetails',
@@ -39,6 +48,6 @@ class m170318_162158_add_new_role_and_premissions extends Migration
   public function down()
   {
     echo "m170318_162158_add_new_role_and_premissions cannot be reverted.\n";
-    return false;
+    return true;
   }
 }
