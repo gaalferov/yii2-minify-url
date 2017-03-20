@@ -12,8 +12,8 @@ What you can do
 * After registration, you can input your long url and get 'private' short link, with hidden analytic information
 
 For example:
-* Long url: http://longurlsitename.com/blog-2016/very-long-article-2016.html
-* Short url: http://burl.pro/aBcDeF
+* Long url: https://gaalferov.com/about-me.html
+* Short url: https://burl.pro/QTkNRW
 
 ![Example](https://burl.pro/images/example.gif)
 
