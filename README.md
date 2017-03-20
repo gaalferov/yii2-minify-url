@@ -1,17 +1,19 @@
 Yii 2 Minify-URL Project (Shortener)
 ============================
 
-This is my first project on yii2 framework.
-You can see [demo](http://burl.pro/)
+Project on Yii2 framework for create your short business url with analytics (geo position (country), browser, platform, referal url)
 
-For example:
-* Long url: http://longurlsitename.com/blog-2016/very-long-article-2016.html
-* Short url: http://yousite.com/aBcDeF
+You can see [demo](http://burl.pro/)
 
 What you can do
 ----
-* Input your long url and get short
-* View statistics (Google Charts)
+* Input your long url and get 'public' short link with analytics information
+* For registration you can use any popular social network (VK,FB,Google+, etc)
+* After registration, you can input your long url and get 'private' short link, with hidden analytic information
+
+For example:
+* Long url: http://longurlsitename.com/blog-2016/very-long-article-2016.html
+* Short url: http://burl.pro/aBcDeF
 
 ![Example](https://burl.pro/images/example.gif)
 
@@ -99,15 +101,24 @@ return  [
   ],
 ];
 ```
+
 * Apply migrations with console command:
 ```php
 php yii migrate
 ```
 
-Now you can then access the application through the following URL:
+Now, you can use the application:
 ~~~
+Admin user: admin@burl.pro
+Admin password: adminpassword
+
 http://localhost/
+https://localhost/user/admin (Manage all users)
+https://localhost/url (Manage all urls)
+https://localhost/user/rbac (Role-Based Access Control)
+
 ~~~
+
 
 TESTS
 ---------------
