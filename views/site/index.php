@@ -15,7 +15,7 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
     <div class="row">
         <div class="col-xs-12 col-lg-7 jumbotron">
             <?php $form = ActiveForm::begin(['action' => '/url/add']); ?>
-            <?= $form->field($model_url, 'long_url')->input('url', ['placeholder' => 'http://yousite.com/'])->label(Yii::t('burl', 'ADD_URL')) ?>
+            <?= $form->field($model_url, 'long_url')->input('text', ['placeholder' => 'http://yousite.com/'])->label(Yii::t('burl', 'ADD_URL')) ?>
             <?= Html::label(Yii::t('burl', 'DISABLE_SHORT_URL'), 'NixShortUrls[time_end]') ?>
             <?= Html::radioList('NixShortUrls[time_end]', '', ['' => Yii::t('burl', 'TIME_NEVER_END'), date('Y-m-d H:i:s', strtotime('+1 week')) => Yii::t('burl', 'TIME_ONE_WEEK'), date('Y-m-d H:i:s', strtotime('+1 month')) => Yii::t('burl', 'TIME_ONE_MONTH')], ['tag' => 'div id="NixShortUrls[time_end]"']) ?>
             <div class="form-group">

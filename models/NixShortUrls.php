@@ -7,6 +7,7 @@ use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\NotAcceptableHttpException;
 use yii\helpers\BaseArrayHelper;
+use yii\helpers\BaseUrl;
 use linslin\yii2\curl;
 
 /**
@@ -45,7 +46,7 @@ class NixShortUrls extends \yii\db\ActiveRecord
   {
     return [
       [['long_url'], 'required'],
-      [['long_url'], 'url'],
+      [['long_url'], 'string', 'min' => 3],
       [['time_create', 'time_end'], 'safe'],
       [['counter', 'user_id'], 'integer'],
       [['short_code'], 'string', 'max' => 6],
@@ -59,13 +60,13 @@ class NixShortUrls extends \yii\db\ActiveRecord
   public function attributeLabels()
   {
     return [
-      'id' => Yii::t('burl', 'ID'),
-      'user_id' => Yii::t('burl', 'USER_ID'),
-      'long_url' => Yii::t('burl', 'LONG_URL'),
-      'short_code' => Yii::t('burl', 'SHORT_CODE'),
+      'id'          => Yii::t('burl', 'ID'),
+      'user_id'     => Yii::t('burl', 'USER_ID'),
+      'long_url'    => Yii::t('burl', 'LONG_URL'),
+      'short_code'  => Yii::t('burl', 'SHORT_CODE'),
       'time_create' => Yii::t('burl', 'CREATED_TIME'),
-      'time_end' => Yii::t('burl', 'TIME_END'),
-      'counter' => Yii::t('burl', 'COUNTER'),
+      'time_end'    => Yii::t('burl', 'TIME_END'),
+      'counter'     => Yii::t('burl', 'COUNTER'),
     ];
   }
 
@@ -96,10 +97,12 @@ class NixShortUrls extends \yii\db\ActiveRecord
 
     $url = NixShortUrls::find()->where(['short_code' => $code])->one();
 
-    if ($url === null) {
+    if ($url === NULL) {
       throw new NotFoundHttpException(Yii::t('burl', 'SHORT_CODE_NOT_FOUND') . $code);
-    } else if (!is_null($url['time_end']) && date("Y-m-d H:i:s") > $url['time_end']) {
-      throw new NotAcceptableHttpException(Yii::t('burl', 'SHORT_CODE_END_TIME') . $url['time_end']);
+    } else {
+      if (!is_null($url['time_end']) && date("Y-m-d H:i:s") > $url['time_end']) {
+        throw new NotAcceptableHttpException(Yii::t('burl', 'SHORT_CODE_END_TIME') . $url['time_end']);
+      }
     }
 
     return $url;
@@ -107,9 +110,51 @@ class NixShortUrls extends \yii\db\ActiveRecord
 
   /**
    * @param $url
+   * @return bool
    * @throws HttpException
    */
   public function checkUrl($url)
+  {
+
+    if (!self::validateUrl($url)) {
+      throw new HttpException(400, Yii::t('burl', 'SHORT_CODE_ERROR_URL') . Yii::t('burl', 'NOT_VALID_URL'));
+    }
+
+    $curl = self::getUrlInformation($url);
+    if (!$curl || $curl->responseCode !== 200) {
+      throw new HttpException(400, Yii::t('burl', 'SHORT_CODE_ERROR_URL') . $curl->responseCode);
+    }
+
+    return true;
+  }
+
+  public static function validateUrl($url)
+  {
+
+    $url_info = parse_url($url);
+
+    if (!$url_info['scheme']) {
+      $url = 'http://' . $url;
+    }
+
+    //TODO Change this if
+    if ($url_info['host'] == 'burl.pro') {
+      return false;
+    }
+
+
+    if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+        return false;
+    }
+
+    return true;
+  }
+
+  /**
+   * @param $url
+   * @return mixed
+   */
+  public static function getUrlInformation($url)
   {
     $curl = new curl\Curl();
 
@@ -118,15 +163,12 @@ class NixShortUrls extends \yii\db\ActiveRecord
     $curl->setOption(CURLOPT_FOLLOWLOCATION, true);
     $curl->setOption(CURLOPT_RETURNTRANSFER, true);
     $curl->setOption(CURLOPT_AUTOREFERER, true);
-    $curl->setOption(CURLOPT_CONNECTTIMEOUT, 60);
-    $curl->setOption(CURLOPT_TIMEOUT, 30);
+    $curl->setOption(CURLOPT_CONNECTTIMEOUT, 5);
+    $curl->setOption(CURLOPT_TIMEOUT, 5);
     $curl->setOption(CURLOPT_MAXREDIRS, 10);
     $curl->setOption(CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.89 Safari/537.36');
 
-    $curl->get($url);
-
-    if ($curl->responseCode != 200)
-      throw new HttpException(400, Yii::t('burl', 'SHORT_CODE_ERROR_URL') . $curl->responseCode);
+    return $curl->get($url);
   }
 
   /**
@@ -134,9 +176,10 @@ class NixShortUrls extends \yii\db\ActiveRecord
    */
   public function getTotalSumCounter()
   {
-    return NixShortUrls::getDb()->cache(function () {
-      return NixShortUrls::find()->from(self::tableName())->sum('counter');
-    }, self::CACHE_DURATION);
+    return NixShortUrls::getDb()->cache(
+      function () {
+        return NixShortUrls::find()->from(self::tableName())->sum('counter');
+      }, self::CACHE_DURATION);
   }
 
   /**
@@ -144,9 +187,10 @@ class NixShortUrls extends \yii\db\ActiveRecord
    */
   public function getTotalUrls()
   {
-    return NixShortUrls::getDb()->cache(function () {
-      return NixShortUrls::find()->from(self::tableName())->count();
-    }, self::CACHE_DURATION);
+    return NixShortUrls::getDb()->cache(
+      function () {
+        return NixShortUrls::find()->from(self::tableName())->count();
+      }, self::CACHE_DURATION);
   }
 
   /**
@@ -159,12 +203,12 @@ class NixShortUrls extends \yii\db\ActiveRecord
     $users_info = BaseArrayHelper::toArray($users_info);
 
     return [
-      'user_agent' => static::getUsersInfo($users_info, 'user_agent'),
-      'user_refer' => static::getUsersInfo($users_info, 'user_refer'),
+      'user_agent'    => static::getUsersInfo($users_info, 'user_agent'),
+      'user_refer'    => static::getUsersInfo($users_info, 'user_refer'),
       'user_platform' => static::getUsersInfo($users_info, 'user_platform'),
-      'user_country' => static::getUsersInfo($users_info, 'user_country'),
-      'user_city' => static::getUsersInfo($users_info, 'user_city'),
-      'date' => static::getUsersInfo($users_info, 'date')
+      'user_country'  => static::getUsersInfo($users_info, 'user_country'),
+      'user_city'     => static::getUsersInfo($users_info, 'user_city'),
+      'date'          => static::getUsersInfo($users_info, 'date')
     ];
   }
 
