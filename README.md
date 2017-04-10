@@ -116,6 +116,7 @@ http://localhost/
 https://localhost/user/admin (Manage all users)
 https://localhost/url (Manage all urls)
 https://localhost/user/rbac (Role-Based Access Control)
+https://localhost/profile (Your profile)
 
 ~~~
 
