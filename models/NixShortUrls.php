@@ -29,6 +29,10 @@ class NixShortUrls extends \yii\db\ActiveRecord
    * Cache duration
    */
   const CACHE_DURATION = 60;
+  /**
+   * Allowed characters for short urls
+   */
+  const ALLOWED_CHARS = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   /**
    * @inheritdoc
@@ -74,9 +78,9 @@ class NixShortUrls extends \yii\db\ActiveRecord
    */
   public function genShortCode()
   {
-    do
-      $shortCode = substr(str_shuffle(ALLOWED_CHARS), 0, 6);
-    while (NixShortUrls::find()->where(['short_code' => $shortCode])->one());
+    do {
+      $shortCode = substr(str_shuffle(self::ALLOWED_CHARS), 0, 6);
+    } while (NixShortUrls::find()->where(['short_code' => $shortCode])->one());
 
     return $shortCode;
   }
@@ -125,8 +129,9 @@ class NixShortUrls extends \yii\db\ActiveRecord
 
     $curl->get($url);
 
-    if ($curl->responseCode != 200)
+    if ($curl->responseCode != 200) {
       throw new HttpException(400, Yii::t('burl', 'SHORT_CODE_ERROR_URL') . $curl->responseCode);
+    }
   }
 
   /**

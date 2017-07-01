@@ -73,7 +73,8 @@ class UrlController extends Controller
   public function actionIndex()
   {
     $dataProvider = new ActiveDataProvider([
-      'query' => NixShortUrls::find(),
+      'query' => NixShortUrls::find()
+          ->addOrderBy('id DESC'),
     ]);
 
     return $this->render('index', [

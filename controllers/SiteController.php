@@ -61,8 +61,7 @@ class SiteController extends Controller
 
     $languageCookie = new Cookie([
       'name' => 'language',
-      'value' => $language,
-      'expire' => time() + 60 * 60 * 24 * 30, // 30 days
+      'value' => $language
     ]);
     Yii::$app->response->cookies->add($languageCookie);
     Yii::$app->session->setFlash('success', Yii::t('burl', 'LANG_CHANGED'));

@@ -57,7 +57,7 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
                         <?php foreach ($short_urls as $url): ?>
                             <tr>
                                 <td>
-                                    <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= Html::encode("{$url->long_url}") ?></a>
+                                    <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= mb_strimwidth(Html::encode("{$url->long_url}"), 0, 50, "...") ?></a>
                                 </td>
                                 <td>
                                     <div><?= $url->time_create ?></div>
