@@ -1,6 +1,8 @@
 Yii 2 Minify-URL Project (Shortener)
 ============================
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/40ba1520435842279111a89b137aace0)](https://www.codacy.com/app/gaalferov/yii2-minify-url?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gaalferov/yii2-minify-url&amp;utm_campaign=Badge_Grade)
+
 Project on Yii2 framework for create your short business url with analytics (geo position (country), browser, platform, referal url)
 
 You can see [demo](http://burl.pro/)
