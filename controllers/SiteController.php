@@ -30,11 +30,10 @@ class SiteController extends Controller
   public function actionIndex()
   {
     $model_url = new NixShortUrls();
+    $query = NixShortUrls::find()->where(['user_id' => 0]);
 
     if (!Yii::$app->user->isGuest) {
       $query = NixShortUrls::find()->where(['user_id' => Yii::$app->user->id]);
-    } else {
-      $query = NixShortUrls::find()->where(['user_id' => 0]);
     }
 
     $pagination = new Pagination([

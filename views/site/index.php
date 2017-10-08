@@ -15,9 +15,21 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
     <div class="row">
         <div class="col-xs-12 col-lg-7 jumbotron">
             <?php $form = ActiveForm::begin(['action' => '/url/add']); ?>
-            <?= $form->field($model_url, 'long_url')->input('url', ['placeholder' => 'http://yousite.com/'])->label(Yii::t('burl', 'ADD_URL')) ?>
+            <?= $form->field($model_url, 'long_url')
+                ->input('url', ['placeholder' => 'http://yousite.com/'])
+                ->label(Yii::t('burl', 'ADD_URL'))
+            ?>
             <?= Html::label(Yii::t('burl', 'DISABLE_SHORT_URL'), 'NixShortUrls[time_end]') ?>
-            <?= Html::radioList('NixShortUrls[time_end]', '', ['' => Yii::t('burl', 'TIME_NEVER_END'), date('Y-m-d H:i:s', strtotime('+1 week')) => Yii::t('burl', 'TIME_ONE_WEEK'), date('Y-m-d H:i:s', strtotime('+1 month')) => Yii::t('burl', 'TIME_ONE_MONTH')], ['tag' => 'div id="NixShortUrls[time_end]"']) ?>
+            <?= Html::radioList(
+                    'NixShortUrls[time_end]',
+                    '',
+                    [
+                        '' => Yii::t('burl', 'TIME_NEVER_END'),
+                        date('Y-m-d H:i:s', strtotime('+1 week')) => Yii::t('burl', 'TIME_ONE_WEEK'),
+                        date('Y-m-d H:i:s', strtotime('+1 month')) => Yii::t('burl', 'TIME_ONE_MONTH')
+                    ],
+                    ['tag' => 'div id="NixShortUrls[time_end]"'])
+            ?>
             <div class="form-group">
                 <?= Html::submitButton(Yii::t('burl', 'SHORTEN_URL'), ['class' => 'btn btn-primary']) ?>
             </div>
@@ -42,7 +54,10 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
         <div class="row">
             <div class="col-lg-12 table-responsive">
                 <table cellspacing="0" class="table table-hover">
-                    <caption><?= (!Yii::$app->user->isGuest) ? Yii::t('burl', 'YOUR_URLS') : Yii::t('burl', 'LAST_PUBLIC_URLS');?>:</caption>
+                    <caption><?= (!Yii::$app->user->isGuest)
+                            ? Yii::t('burl', 'YOUR_URLS')
+                            : Yii::t('burl', 'LAST_PUBLIC_URLS'); ?>:
+                    </caption>
                     <thead>
                     <tr class="text-uppercase">
                         <th><?= Yii::t('burl', 'ORIGINAL_URL') ?></th>

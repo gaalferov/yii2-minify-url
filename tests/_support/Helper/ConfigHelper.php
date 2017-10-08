@@ -7,8 +7,8 @@ class ConfigHelper extends \Codeception\Module
   {
     if (isset($this->config[$key])) {
       return $this->config[$key];
-    } else {
-      return null;
     }
+
+    return null;
   }
 }

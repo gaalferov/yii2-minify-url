@@ -34,7 +34,7 @@ class DetailsController extends Controller
           [
             'allow' => true,
             'actions' => ['index'],
-            'matchCallback' => function ($rule, $action) {
+            'matchCallback' => function () {
               return $this->_checkAccess(Yii::$app->request->get('code'));
             }
             //'roles' => ['detailsView'],
