@@ -37,7 +37,7 @@ return [
   'NAVBAR_USERS' => 'Пользователи',
   'NAVBAR_RBAC' => 'RBAC',
   'NAVBAR_LOGOUT' => 'Выход',
-  'CREATED_NEW_SHORT_URL' => 'Поздравляем! Вы успено создали новую короткую ссылку.',
+  'CREATED_NEW_SHORT_URL' => 'Поздравляем! Вы успешно создали новую короткую ссылку.',
   'YOUR_URLS' => 'Ваши ссылки',
   'LAST_PUBLIC_URLS' => 'Последние публичные ссылки',
   'ORIGINAL_URL' => 'Оригинальный урл',
