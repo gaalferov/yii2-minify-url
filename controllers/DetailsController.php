@@ -37,7 +37,6 @@ class DetailsController extends Controller
             'matchCallback' => function () {
               return $this->_checkAccess(Yii::$app->request->get('code'));
             }
-            //'roles' => ['detailsView'],
           ],
         ],
       ],
