@@ -2,7 +2,7 @@
     "name": "gaalferov/yii2-minify-url",
     "description": "Project on YII2 framework for create short url (url shortener)",
     "keywords": ["yii2", "framework", "minify", "shortener"],
-    "homepage": "http://burl.pro/",
+    "homepage": "https://burl.pro/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {
@@ -24,7 +24,8 @@
         "codeception/codeception": "*",
         "codeception/remote-debug": "*",
         "codeception/specify": "*",
-        "codeception/verify": "*"
+        "codeception/verify": "*",
+        "roave/security-advisories": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
