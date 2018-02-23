@@ -5,13 +5,13 @@ Yii 2 Minify-URL Project (Shortener)
 
 Project on Yii2 framework for create your short business url with analytics (geo position (country), browser, platform, referal url)
 
-You can see [demo](http://burl.pro/)
+You can see [demo](https://burl.pro/)
 
-What you can do
+What can you do
 ----
 * Input your long url and get 'public' short link with analytics information
-* For registration you can use any popular social network (VK,FB,Google+, etc)
-* After registration, you can input your long url and get 'private' short link, with hidden analytic information
+* For registration you can use any popular social networks (VK, FB, Google+, etc)
+* After registration, you can input your long url and get 'private' shortlink. In 'private' url, analytic information hidden from other users
 
 For example:
 * Long url: https://gaalferov.com/about-me.html
