@@ -7,7 +7,7 @@ modules:
         - \Helper\ConfigHelper
     config:
         PhpBrowser:
-            url: 'http://burl.dev'
+            url: 'http://burl.loc'
         \Helper\ConfigHelper:
             TESTUser: 'sa_user'
             TESTPasswd: 'sa_pswd'
@@ -21,7 +21,7 @@ env:
                  - WebDriver
              config:
                  WebDriver:
-                     url: 'http://burl.dev'
+                     url: 'http://burl.loc'
                      browser: 'phantomjs'
                      capabilities:
                          javascriptEnabled: true
@@ -34,7 +34,7 @@ env:
                   - WebDriver
               config:
                   WebDriver:
-                      url: 'http://burl.dev'
+                      url: 'http://burl.loc'
                       browser: 'firefox'
                       host: selenium
                       clear_cookies: true
