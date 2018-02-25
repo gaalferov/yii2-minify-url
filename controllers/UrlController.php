@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\NixShortUrls;
-use yii\data\ActiveDataProvider;
+use app\models\NixShortUrlsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\AccessControl;
@@ -73,14 +73,13 @@ class UrlController extends Controller
    */
   public function actionIndex()
   {
-    $dataProvider = new ActiveDataProvider([
-      'query' => NixShortUrls::find()
-          ->addOrderBy('id DESC'),
-    ]);
+      $searchModel = new NixShortUrlsSearch();
+      $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
 
-    return $this->render('index', [
-      'dataProvider' => $dataProvider,
-    ]);
+      return $this->render('index', [
+          'dataProvider' => $dataProvider,
+          'searchModel' => $searchModel,
+      ]);
   }
 
   /**
