@@ -32,7 +32,6 @@ class IndexPageCest
   {
     $I->fillField('NixShortUrls[long_url]', 'http://notcorrecturlrrrrrrr.asd');
     $I->click('Shorten URL');
-    $I->waitForElementVisible('.site-error', 5);
     $I->see('Bad Request', 'h1');
   }
 
@@ -43,7 +42,6 @@ class IndexPageCest
   {
     $I->fillField('NixShortUrls[long_url]', 'http://codeception.com');
     $I->click('Shorten URL');
-    $I->waitForElementVisible('.alert-success', 5);
     $I->see('Congratulation! You are created new short url.');
   }
 }
