@@ -5,7 +5,7 @@ Yii 2 Minify-URL Project (Shortener)
 
 Project on Yii2 framework for create your short business url with analytics (geo position (country), browser, platform, referal url)
 
-You can see [demo](https://burl.pro/)
+Demo - [https://burl.pro](https://burl.pro/)
 
 What can you do
 ----
@@ -37,7 +37,7 @@ GETTING STARTED
 After you install the application, you have to conduct the following steps to initialize the installed application. You only need to do these once for all.
 
 * Create a new database
-* Add and edit the file `config/db-local.php` with real data, for example:
+* Add and edit the file `app/config/db-local.php` with real data, for example:
 ```php
 <?php
 return [
@@ -49,7 +49,7 @@ return [
     'tablePrefix' => 'nix_',
 ];
 ```
-* Add to file `config/web-local.php` your oauth data, for example:
+* Add to file `app/config/web-local.php` your oauth data, for example:
 ```php
 <?php
 return  [

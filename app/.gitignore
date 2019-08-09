@@ -1,0 +1,19 @@
+# composer vendor dir
+/vendor
+
+# composer itself is not needed
+composer.phar
+
+# phpunit itself is not needed
+phpunit.phar
+# local phpunit config
+/phpunit.xml
+
+/logs
+
+#config files
+config/db-local.php
+config/params-local.php
+config/web-local.php
+
+#tests
