@@ -1,0 +1,56 @@
+version: '3.2'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    depends_on:
+      - db
+    ports:
+      - 80:80
+    networks:
+      - default
+    volumes:
+      - ./app:/var/www/html
+    environment:
+      - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
+      - PHP_ENABLE_XDEBUG=${PHP_ENABLE_XDEBUG}
+      - GITHUB_API_TOKEN=${GITHUB_API_TOKEN}
+      - MYSQL_HOST=db
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_TABLE_PREFIX=${MYSQL_TABLE_PREFIX}
+
+  db:
+    image: mysql:5.7
+    restart: always
+    networks:
+      - default
+    ports:
+      - 3336:3306
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./database:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=${MYSQL_USER}
+      - PMA_PASSWORD=${MYSQL_PASSWORD}
+
+networks:
+  default:
+    driver: bridge
+
