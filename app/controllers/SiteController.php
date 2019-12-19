@@ -56,7 +56,10 @@ class SiteController extends Controller
             'totalCount' => $query->count(),
         ]);
 
-        $short_urls = $query->addOrderBy('id DESC')->offset($pagination->offset)->limit($pagination->limit)->all();
+        $short_urls = $query->addOrderBy('id DESC')
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
 
         return $this->render('index', [
             'short_urls' => $short_urls,
