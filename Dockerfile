@@ -69,7 +69,7 @@ RUN printf "\n" | pecl install \
 RUN cd /tmp && \
     git clone git://github.com/xdebug/xdebug.git && \
     cd xdebug && \
-    git checkout 2.7.2 && \
+    git checkout 2.9.0 && \
     phpize && \
     ./configure --enable-xdebug && \
     make && \
