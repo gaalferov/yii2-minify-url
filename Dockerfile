@@ -114,7 +114,8 @@ RUN curl -L https://raw.githubusercontent.com/yiisoft/yii2/master/contrib/comple
         -o /etc/bash_completion.d/yii
 
 # Requirements check (https://github.com/yiisoft/yii2-docker)
-RUN php /tmp/tests/requirements.php
+RUN chmod 777 /tmp && \
+    php /tmp/tests/requirements.php
 
 # Application environment
 WORKDIR /var/www/html
