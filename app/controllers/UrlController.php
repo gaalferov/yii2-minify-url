@@ -92,9 +92,9 @@ class UrlController extends Controller
      *
      * @param integer $id
      *
-     * @return string
+     * @return string|Response
      */
-    public function actionUpdate($id): string
+    public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
@@ -145,30 +145,30 @@ class UrlController extends Controller
 
     /**
      * Add Action
+     *
+     * @return Response
      */
     public function actionAdd(): Response
     {
         $model_url = new NixShortUrls();
 
-        if (Yii::$app->request->post()) {
-            if ($model_url->load(Yii::$app->request->post()) && $model_url->validate()) {
-                if (!Yii::$app->user->isGuest) {
-                    $model_url->setAttributes(
-                        [
-                            'user_id' => Yii::$app->user->id
-                        ]
-                    );
-                }
-                $model_url->checkUrl($model_url['long_url']);
+        if (Yii::$app->request->post() && $model_url->load(Yii::$app->request->post()) && $model_url->validate()) {
+            if (!Yii::$app->user->isGuest) {
                 $model_url->setAttributes(
                     [
-                        'short_code' => $model_url->genShortCode(),
-                        'time_create' => date("Y-m-d H:i:s")
+                        'user_id' => Yii::$app->user->id
                     ]
                 );
-                $model_url->save();
-                Yii::$app->session->setFlash('success', Yii::t('burl', 'CREATED_NEW_SHORT_URL'));
             }
+            $model_url->checkUrl($model_url['long_url']);
+            $model_url->setAttributes(
+                [
+                    'short_code' => $model_url->genShortCode(),
+                    'time_create' => date("Y-m-d H:i:s")
+                ]
+            );
+            $model_url->save();
+            Yii::$app->session->setFlash('success', Yii::t('burl', 'CREATED_NEW_SHORT_URL'));
         }
 
         return $this->redirect(Yii::$app->request->referrer);

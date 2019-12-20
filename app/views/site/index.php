@@ -6,7 +6,7 @@ use yii\widgets\LinkPager;
 use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\NixShortUrls */
+/* @var $model_url app\models\NixShortUrls */
 /* @var $form ActiveForm */
 $this->title = Yii::t('burl', 'BURL_TITLE');
 ?>
@@ -39,11 +39,11 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
                 <p><?= Yii::t('burl', 'SITE_STATISTICS') ?></p>
                 <div class="row text-lowercase">
                     <div class="col-lg-6 text-center">
-                        <p class="text-center"><?=777 + (int)$model_url->totalUrls?></p>
+                        <p class="text-center"><?= (int) $model_url->totalUrls?></p>
                         <p class="text-center"><small><?= Yii::t('burl', 'TOTAL_SU') ?></small></p>
                     </div>
                     <div class="col-lg-6 text-center">
-                        <p class="text-center"><?=3584 + (int)$model_url->totalSumCounter?></p>
+                        <p class="text-center"><?= (int) $model_url->totalSumCounter?></p>
                         <p class="text-center"><small><?= Yii::t('burl', 'TOTAL_UV') ?></small></p>
                     </div>
                 </div>
@@ -72,7 +72,8 @@ $this->title = Yii::t('burl', 'BURL_TITLE');
                         <?php foreach ($short_urls as $url): ?>
                             <tr>
                                 <td>
-                                    <a href="<?= Html::encode("{$url->long_url}") ?>" target="_blank" rel="nofollow"><?= mb_strimwidth(Html::encode("{$url->long_url}"), 0, 50, "...") ?></a>
+                                    <a href="<?= Html::encode($url->long_url) ?>" target="_blank" rel="nofollow"><?= mb_strimwidth(Html::encode("{$url->long_url}"), 0, 50, "...") ?></a>
+                                    <?= $url->note ? '<br><i>' . Html::encode($url->note) . '</i>' : '' ?>
                                 </td>
                                 <td>
                                     <div><?= $url->time_create ?></div>

@@ -13,7 +13,7 @@ class NixShortUrlsSearch extends NixShortUrls
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['id', 'user_id', 'counter'], 'integer'],
@@ -37,7 +37,7 @@ class NixShortUrlsSearch extends NixShortUrls
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params): ActiveDataProvider
     {
         $query = NixShortUrls::find()->addOrderBy(['id' => SORT_DESC]);
         $dataProvider = new ActiveDataProvider([

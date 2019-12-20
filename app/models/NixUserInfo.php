@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "{{%short_urls_info}}".
@@ -14,14 +15,14 @@ use Yii;
  * @property string $user_ip
  * @property string $date
  *
- * @property ShortUrls $shortUrl
+ * @property NixShortUrls $shortUrl
  */
-class NixUserInfo extends \yii\db\ActiveRecord
+class NixUserInfo extends ActiveRecord
 {
     /**
      * @inheritdoc
      */
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%short_urls_info}}';
     }
@@ -29,7 +30,7 @@ class NixUserInfo extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             [['short_url_id', 'user_agent', 'user_ip', 'date'], 'required'],
