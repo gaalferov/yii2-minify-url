@@ -1,6 +1,6 @@
 <?php
 
-if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) {
+if (in_array(@$_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1']) || getenv('PHP_ENABLE_XDEBUG')) {
     defined('YII_DEBUG') or define('YII_DEBUG', true);
     defined('YII_ENV') or define('YII_ENV', 'dev');
 }

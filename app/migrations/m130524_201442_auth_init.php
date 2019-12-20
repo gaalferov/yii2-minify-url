@@ -8,7 +8,7 @@ use budyaga\users\Module;
 
 class m130524_201442_auth_init extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         Module::registerTranslations();
 
@@ -162,7 +162,7 @@ class m130524_201442_auth_init extends Migration
         ]);
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->dropTable('{{%auth_assignment}}');
         $this->dropTable('{{%auth_item_child}}');

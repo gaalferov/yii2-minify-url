@@ -5,7 +5,7 @@ use yii\db\Migration;
 
 class m160121_131936_short_urls extends Migration
 {
-    public function up()
+    public function safeUp()
     {
         $tableOptions = null;
 
@@ -44,7 +44,7 @@ class m160121_131936_short_urls extends Migration
 
     }
 
-    public function down()
+    public function safeDown()
     {
         $this->dropTable('{{%short_urls_info}}');
         $this->dropTable('{{%short_urls}}');

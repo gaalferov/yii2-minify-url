@@ -6,7 +6,7 @@ use yii\rbac\Item;
 
 class m170318_162158_add_new_role_and_premissions extends Migration
 {
-  public function up()
+  public function safeUp()
   {
 
     if (!isset(Yii::$app->i18n->translations['users']) && !isset(Yii::$app->i18n->translations['users/*'])) {
@@ -45,7 +45,7 @@ class m170318_162158_add_new_role_and_premissions extends Migration
     $this->alterColumn('{{%short_urls}}', 'short_code', Schema::TYPE_STRING . '(6) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL');
   }
 
-  public function down()
+  public function safeDown()
   {
     echo "m170318_162158_add_new_role_and_premissions cannot be reverted.\n";
     return true;

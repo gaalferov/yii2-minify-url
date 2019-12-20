@@ -22,7 +22,7 @@ return [
   'MAIN_KEYWORDS' => 'business, short, URLs, analytics, geo, refer, platform, browser, clicks',
   'LANG_CHANGED' => 'Language successfully changed',
   'ADD_URL' => 'Paste your original URL here:',
-  'DISABLE_SHORT_URL' => 'Disable short url?',
+  'DISABLE_SHORT_URL' => 'Short url will be disabled after',
   'TIME_NEVER_END' => 'Never',
   'TIME_ONE_WEEK' => 'One week',
   'TIME_ONE_MONTH' => 'One month',

@@ -1,5 +1,6 @@
 <?php
 
+use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
@@ -45,7 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'time_create',
             'time_end',
             'counter',
-            ['class' => 'yii\grid\ActionColumn', 'template' => '{update} {delete}'],
+            'note',
+            ['class' => ActionColumn::class, 'template' => '{update} {delete}'],
         ],
     ]); ?>
     <?php Pjax::end(); ?>
