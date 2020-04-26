@@ -39,14 +39,17 @@ Password: yii2shortenerpassword
 * Add to file `app/config/web-local.php` your oauth data, for example:
 ```php
 <?php
-use budyaga\users\components\oauth\Google;
-
 return  [
   'components' => [
     'authClientCollection' => [
       'clients' => [
         'google' => [
-          'class' => Google::class,
+          'class' => 'app\components\oauth\Google',
+          'clientId' => 'XXX',
+          'clientSecret' => 'XXX',
+        ],
+        'facebook' => [
+          'class' => 'budyaga\users\components\oauth\Facebook',
           'clientId' => 'XXX',
           'clientSecret' => 'XXX',
         ],
